@@ -1,0 +1,113 @@
+{
+  "nhits": 1,
+  "parameters": {
+    "dataset": [
+      "economicref-france-sirene-v3"
+    ],
+    "q": "832940670",
+    "rows": 10,
+    "start": 0,
+    "sort": [
+      "datederniertraitementetablissement"
+    ],
+    "refine": {
+      "etablissementsiege": "oui"
+    },
+    "format": "json",
+    "timezone": "UTC"
+  },
+  "records": [
+    {
+      "datasetid": "economicref-france-sirene-v3",
+      "recordid": "de4fe2054a19a07575f1278e82a101b3ae3e6ccb",
+      "fields": {
+        "libellecommuneetablissement": "PARIS 10",
+        "etatadministratifunitelegale": "Active",
+        "codecommuneetablissement": "75110",
+        "geolocetablissement": [
+          48.878932,
+          2.367315
+        ],
+        "typevoieetablissement": "Quai",
+        "anneeeffectifsunitelegale": "2020",
+        "trancheeffectifsunitelegale": "20 \u00e0 49 salari\u00e9s",
+        "codepostaletablissement": "75010",
+        "anneecategorieentreprise": "2020",
+        "libellevoieetablissement": "DE JEMMAPES",
+        "categorieentreprise": "PME",
+        "adresseetablissement": "174 Quai DE JEMMAPES",
+        "siretsiegeunitelegale": "83294067000033",
+        "statutdiffusionetablissement": "O",
+        "siret": "83294067000033",
+        "anneeeffectifsetablissement": "2020",
+        "trancheeffectifsetablissement": "20 \u00e0 49 salari\u00e9s",
+        "etablissementsiege": "oui",
+        "nic": "00033",
+        "siren": "832940670",
+        "nombreperiodesunitelegale": 5,
+        "trancheeffectifsunitelegaletriable": 12,
+        "classeunitelegale": "Programmation informatique",
+        "statutdiffusionunitelegale": "O",
+        "groupeunitelegale": "Programmation informatique",
+        "naturejuridiqueunitelegale": "SAS, soci\u00e9t\u00e9 par actions simplifi\u00e9e",
+        "sectionunitelegale": "Information et communication",
+        "classeetablissement": "Programmation informatique",
+        "caractereemployeuretablissement": "Non",
+        "divisionunitelegale": "Programmation, conseil et autres activit\u00e9s informatiques",
+        "nomenclatureactiviteprincipaleetablissement": "NAFRev2",
+        "soussectionunitelegale": "Programmation, conseil et autres activit\u00e9s informatiques",
+        "numerovoieetablissement": 174,
+        "nombreperiodesetablissement": 1,
+        "trancheeffectifsetablissementtriable": 12,
+        "groupeetablissement": "Programmation informatique",
+        "divisionetablissement": "Programmation, conseil et autres activit\u00e9s informatiques",
+        "activiteprincipaleetablissement": "62.01Z",
+        "soussectionetablissement": "Programmation, conseil et autres activit\u00e9s informatiques",
+        "coderegionetablissement": "11",
+        "departementetablissement": "Paris",
+        "etatadministratifetablissement": "Actif",
+        "sectionetablissement": "Information et communication",
+        "regionetablissement": "\u00cele-de-France",
+        "datedebutetablissement": "2019-10-01",
+        "epcietablissement": "M\u00e9tropole du Grand Paris",
+        "datederniertraitementetablissement": "2023-06-05T09:01:30+00:00",
+        "codeepcietablissement": "200054781",
+        "datederniertraitementunitelegale": "2023-04-05T08:45:40+00:00",
+        "codedepartementetablissement": "75",
+        "datecreationunitelegale": "2017-10-26",
+        "codearrondissementetablissement": "751",
+        "datedebutunitelegale": "2022-06-30",
+        "caractereemployeurunitelegale": "Non",
+        "societemissionunitelegale": "N",
+        "economiesocialesolidaireunitelegale": "N",
+        "activiteprincipaleunitelegale": "62.01Z",
+        "categoriejuridiqueunitelegale": "5710",
+        "datecreationetablissement": "2019-10-01",
+        "nicsiegeunitelegale": "00033",
+        "nomenclatureactiviteprincipaleunitelegale": "NAFRev2",
+        "denominationunitelegale": "TRUSTPAIR"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.367315,
+          48.878932
+        ]
+      },
+      "record_timestamp": "2023-08-07T13:45:00Z"
+    }
+  ],
+  "facet_groups": [
+    {
+      "name": "etablissementsiege",
+      "facets": [
+        {
+          "name": "oui",
+          "count": 1,
+          "state": "refined",
+          "path": "oui"
+        }
+      ]
+    }
+  ]
+}
