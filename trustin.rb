@@ -3,8 +3,9 @@ require "net/http"
 require "logger"
 
 class TrustIn
-  def initialize(evaluations)
+  def initialize(evaluations, clients_apis = {siren: SirenApiClient})
     @evaluations = evaluations
+    @clients_apis = clients_apis
   end
 
   def update_score()
@@ -25,10 +26,8 @@ class TrustIn
       # A new evaluation is done when:
       # - the state is unconfirmed for an ongoing api database update;
       # - the current score is equal to 0;
-      data = SirenApiClient.call(evaluation.value)
-      evaluation.state = data[:state]
-      evaluation.reason = data[:reason]
-      evaluation.score = data[:score]
+      evaluation.reset(@clients_apis[:siren].call(evaluation.value))
+
     elsif evaluation.favorable?
       # When the state is favorable, the company evaluation's score decreases of 1 point (on the contrary, a company can close so an evaluation should be challenged again after some time)
       evaluation.decrease_score(1)
@@ -86,6 +85,12 @@ class Evaluation
     # The score cannot go below 0
     @score -= value
     @score = 0 if @score < 0
+  end
+
+  def reset(data)
+    @score = data[:score]
+    @state = data[:state]
+    @reason = data[:reason]
   end
 end
 

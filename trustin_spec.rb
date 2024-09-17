@@ -4,7 +4,7 @@ require 'vcr'
 require 'webmock/rspec'
 
 VCR.configure do |config|
-  config.allow_http_connections_when_no_cassette = true
+  config.allow_http_connections_when_no_cassette = false
   config.cassette_library_dir = "spec/vcr_cassettes"
   config.hook_into :webmock
   config.configure_rspec_metadata!
@@ -14,7 +14,8 @@ require File.join(File.dirname(__FILE__), "trustin")
 
 RSpec.describe TrustIn do
   describe "#update_score()" do
-    subject! { described_class.new(evaluations).update_score() }
+    let(:clients_apis) { {} }
+    subject! { described_class.new(evaluations, **clients_apis).update_score() }
 
     context "when the evaluation type is 'SIREN'" do
       context "with a <score> greater or equal to 50 AND the <state> is unconfirmed and the <reason> is 'unable_to_reach_api'" do
@@ -42,6 +43,14 @@ RSpec.describe TrustIn do
       end
 
       context "when the <state> is 'unconfirmed' AND the <reason> is 'ongoing_database_update'" do
+        let(:clients_apis) do
+          api = Class.new do
+            def self.call(value)
+              {state: "favorable", reason: "company_opened", score: 100}
+            end
+          end
+          {siren: api}
+        end
         let(:evaluations) { [Evaluation.new(type: "SIREN", value: "832940670", score: 42, state: "unconfirmed", reason: "ongoing_database_update")] }
 
         it "assigns a <state> and a <reason> to the evaluation based on the API response and a <score> to 100" do
@@ -52,6 +61,14 @@ RSpec.describe TrustIn do
       end
 
       context "with a <score> equal to 0" do
+        let(:clients_apis) do
+          api = Class.new do
+            def self.call(value)
+              {state: "unfavorable", reason: "company_closed", score: 100}
+            end
+          end
+          {siren: api}
+        end
         let(:evaluations) { [Evaluation.new(type: "SIREN", value: "320878499", score: 0, state: "favorable", reason: "company_opened")] }
 
         it "assigns a <state> and a <reason> to the evaluation based on the API response and a <score> to 100" do
@@ -70,10 +87,18 @@ RSpec.describe TrustIn do
       end
 
       context "with a <state>'unfavorable' AND a <score> equal to 0" do
+        let(:clients_apis) do
+          api = Class.new do
+            def self.call(value)
+              {state: "unfavorable", reason: "company_closed", score: 100}
+            end
+          end
+          {siren: api}
+        end
         let(:evaluations) { [Evaluation.new(type: "SIREN", value: "123456789", score: 0, state: "unfavorable", reason: "company_closed")] }
 
         it "does not call the API" do
-          expect(Net::HTTP).not_to receive(:get)
+          expect(evaluations.first.score).not_to eq(100)
         end
       end
     end
