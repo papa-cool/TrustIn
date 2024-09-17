@@ -1,5 +1,15 @@
 # frozen_string_literal: true
 
+require 'vcr'
+require 'webmock/rspec'
+
+VCR.configure do |config|
+  config.allow_http_connections_when_no_cassette = true
+  config.cassette_library_dir = "spec/vcr_cassettes"
+  config.hook_into :webmock
+  config.configure_rspec_metadata!
+end
+
 require File.join(File.dirname(__FILE__), "trustin")
 
 RSpec.describe TrustIn do
@@ -67,5 +77,37 @@ RSpec.describe TrustIn do
         end
       end
     end
+  end
+end
+
+RSpec.describe SirenApiClient do
+  around do |example|
+    VCR.use_cassette(vcr_cassette_name) do
+      example.run
+    end
+  end
+
+  subject { described_class.call(siren) }
+
+  context "when the company state is 'Actif'" do
+    let(:vcr_cassette_name) { "siren_api_client/actif" }
+
+    let(:siren) { "832940670" }
+
+    it { is_expected.to eq({state: "favorable", reason: "company_opened", score: 100}) }
+  end
+
+  context "when the company state is not 'Actif'" do
+    let(:vcr_cassette_name) { "siren_api_client/inactif" }
+    let(:siren) { "320878499" }
+
+    it { is_expected.to eq({state: "unfavorable", reason: "company_closed", score: 100}) }
+  end
+
+  context "when the API is down" do
+    let(:vcr_cassette_name) { "siren_api_client/down" }
+    let(:siren) { "123456789" }
+
+    it { is_expected.to eq({state: "unconfirmed", reason: "unable_to_reach_api", score: 100}) }
   end
 end

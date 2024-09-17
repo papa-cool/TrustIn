@@ -1,0 +1,114 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://public.opendatasoft.com/api/records/1.0/search/?dataset=economicref-france-sirene-v3&q=832940670&refine.etablissementsiege=oui&sort=datederniertraitementetablissement
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - public.opendatasoft.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty
+      Date:
+      - Tue, 17 Sep 2024 09:27:10 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - public, max-age=60
+      X-Ratelimit-Remaining:
+      - '9999733522'
+      X-Ratelimit-Limit:
+      - '10000000000'
+      X-Ratelimit-Reset:
+      - '2024-09-18 00:00:00+00:00'
+      Content-Language:
+      - en-gb
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Access-Control-Max-Age:
+      - '1000'
+      Access-Control-Allow-Headers:
+      - Authorization, X-Requested-With, Origin, ODS-API-Analytics-App, ODS-API-Analytics-Embed-Type,
+        ODS-API-Analytics-Embed-Referrer, ODS-Widgets-Version, Accept
+      Access-Control-Expose-Headers:
+      - ODS-Explore-API-Deprecation, Link, X-RateLimit-Remaining, X-RateLimit-Limit,
+        X-RateLimit-Reset, X-RateLimit-dataset-Remaining, X-RateLimit-dataset-Limit,
+        X-RateLimit-dataset-Reset
+      Permissions-Policy:
+      - midi=(),microphone=(),camera=(),magnetometer=(),gyroscope=(),fullscreen=(self),payment=()
+      Content-Security-Policy:
+      - upgrade-insecure-requests;
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ua-Compatible:
+      - IE=edge
+    body:
+      encoding: ASCII-8BIT
+      string: '{"nhits": 1, "parameters": {"dataset": ["economicref-france-sirene-v3"],
+        "q": "832940670", "rows": 10, "start": 0, "sort": ["datederniertraitementetablissement"],
+        "refine": {"etablissementsiege": "oui"}, "format": "json", "timezone": "UTC"},
+        "records": [{"datasetid": "economicref-france-sirene-v3", "recordid": "de4fe2054a19a07575f1278e82a101b3ae3e6ccb",
+        "fields": {"libellecommuneetablissement": "PARIS", "etatadministratifunitelegale":
+        "Active", "codecommuneetablissement": "75110", "geolocetablissement": [48.878932,
+        2.367315], "typevoieetablissement": "Quai", "anneeeffectifsunitelegale": "2021",
+        "trancheeffectifsunitelegale": "20 \u00e0 49 salari\u00e9s", "codepostaletablissement":
+        "75010", "anneecategorieentreprise": "2021", "libellevoieetablissement": "DE
+        JEMMAPES", "categorieentreprise": "PME", "adresseetablissement": "174 Quai
+        DE JEMMAPES", "siretsiegeunitelegale": "83294067000033", "statutdiffusionetablissement":
+        "O", "siret": "83294067000033", "anneeeffectifsetablissement": "2021", "trancheeffectifsetablissement":
+        "20 \u00e0 49 salari\u00e9s", "etablissementsiege": "oui", "nic": "00033",
+        "siren": "832940670", "nombreperiodesunitelegale": 3, "trancheeffectifsunitelegaletriable":
+        12, "classeunitelegale": "Programmation informatique", "statutdiffusionunitelegale":
+        "O", "groupeunitelegale": "Programmation informatique", "naturejuridiqueunitelegale":
+        "SAS, soci\u00e9t\u00e9 par actions simplifi\u00e9e", "sectionunitelegale":
+        "Information et communication", "classeetablissement": "Programmation informatique",
+        "caractereemployeuretablissement": "Non", "divisionunitelegale": "Programmation,
+        conseil et autres activit\u00e9s informatiques", "nomenclatureactiviteprincipaleetablissement":
+        "NAFRev2", "soussectionunitelegale": "Programmation, conseil et autres activit\u00e9s
+        informatiques", "numerovoieetablissement": 174, "nombreperiodesetablissement":
+        1, "trancheeffectifsetablissementtriable": 12, "groupeetablissement": "Programmation
+        informatique", "divisionetablissement": "Programmation, conseil et autres
+        activit\u00e9s informatiques", "activiteprincipaleetablissement": "62.01Z",
+        "soussectionetablissement": "Programmation, conseil et autres activit\u00e9s
+        informatiques", "coderegionetablissement": "11", "departementetablissement":
+        "Paris", "etatadministratifetablissement": "Actif", "sectionetablissement":
+        "Information et communication", "regionetablissement": "\u00cele-de-France",
+        "datedebutetablissement": "2019-10-01", "epcietablissement": "M\u00e9tropole
+        du Grand Paris", "datederniertraitementetablissement": "2024-03-30T17:21:05+00:00",
+        "codeepcietablissement": "200054781", "datederniertraitementunitelegale":
+        "2024-03-22T14:26:06+00:00", "codedepartementetablissement": "75", "datecreationunitelegale":
+        "2017-10-26", "codearrondissementetablissement": "751", "datedebutunitelegale":
+        "2019-10-01", "economiesocialesolidaireunitelegale": "N", "activiteprincipaleunitelegale":
+        "62.01Z", "categoriejuridiqueunitelegale": "5710", "datecreationetablissement":
+        "2019-10-01", "nicsiegeunitelegale": "00033", "nomenclatureactiviteprincipaleunitelegale":
+        "NAFRev2", "denominationunitelegale": "TRUSTPAIR"}, "geometry": {"type": "Point",
+        "coordinates": [2.367315, 48.878932]}, "record_timestamp": "2024-07-03T09:21:00Z"}],
+        "facet_groups": [{"name": "etablissementsiege", "facets": [{"name": "oui",
+        "count": 1, "state": "refined", "path": "oui"}]}]}'
+  recorded_at: Tue, 17 Sep 2024 09:27:10 GMT
+recorded_with: VCR 6.3.1

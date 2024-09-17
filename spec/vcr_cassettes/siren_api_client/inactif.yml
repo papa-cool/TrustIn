@@ -1,0 +1,111 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://public.opendatasoft.com/api/records/1.0/search/?dataset=economicref-france-sirene-v3&q=320878499&refine.etablissementsiege=oui&sort=datederniertraitementetablissement
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - public.opendatasoft.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty
+      Date:
+      - Tue, 17 Sep 2024 09:27:11 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - public, max-age=60
+      X-Ratelimit-Remaining:
+      - '9999716608'
+      X-Ratelimit-Limit:
+      - '10000000000'
+      X-Ratelimit-Reset:
+      - '2024-09-18 00:00:00+00:00'
+      Content-Language:
+      - en-gb
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - POST, GET, OPTIONS
+      Access-Control-Max-Age:
+      - '1000'
+      Access-Control-Allow-Headers:
+      - Authorization, X-Requested-With, Origin, ODS-API-Analytics-App, ODS-API-Analytics-Embed-Type,
+        ODS-API-Analytics-Embed-Referrer, ODS-Widgets-Version, Accept
+      Access-Control-Expose-Headers:
+      - ODS-Explore-API-Deprecation, Link, X-RateLimit-Remaining, X-RateLimit-Limit,
+        X-RateLimit-Reset, X-RateLimit-dataset-Remaining, X-RateLimit-dataset-Limit,
+        X-RateLimit-dataset-Reset
+      Permissions-Policy:
+      - midi=(),microphone=(),camera=(),magnetometer=(),gyroscope=(),fullscreen=(self),payment=()
+      Content-Security-Policy:
+      - upgrade-insecure-requests;
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Ua-Compatible:
+      - IE=edge
+    body:
+      encoding: ASCII-8BIT
+      string: '{"nhits": 1, "parameters": {"dataset": ["economicref-france-sirene-v3"],
+        "q": "320878499", "rows": 10, "start": 0, "sort": ["datederniertraitementetablissement"],
+        "refine": {"etablissementsiege": "oui"}, "format": "json", "timezone": "UTC"},
+        "records": [{"datasetid": "economicref-france-sirene-v3", "recordid": "3a7d83118781064c6f668d412261233bf5598f64",
+        "fields": {"libellecommuneetablissement": "YZEURE", "etatadministratifunitelegale":
+        "Cess\u00e9e", "codecommuneetablissement": "03321", "typevoieetablissement":
+        "Route", "codepostaletablissement": "03400", "libellevoieetablissement": "DE
+        LYON", "adresseetablissement": "158 Route DE LYON", "siretsiegeunitelegale":
+        "32087849900021", "statutdiffusionetablissement": "O", "siret": "32087849900021",
+        "etablissementsiege": "oui", "complementadresseetablissement": "48 RUE DES
+        EPOUX CONTOUX ET", "nic": "00021", "siren": "320878499", "nombreperiodesunitelegale":
+        10, "classeunitelegale": "Location de terrains et d''autres biens immobiliers",
+        "statutdiffusionunitelegale": "O", "groupeunitelegale": "Location et exploitation
+        de biens immobiliers propres ou lou\u00e9s", "naturejuridiqueunitelegale":
+        "SAS, soci\u00e9t\u00e9 par actions simplifi\u00e9e", "sectionunitelegale":
+        "Activit\u00e9s immobili\u00e8res", "classeetablissement": "Location de terrains
+        et d''autres biens immobiliers", "caractereemployeuretablissement": "Non",
+        "divisionunitelegale": "Location et exploitation de biens immobiliers propres
+        ou lou\u00e9s", "nomenclatureactiviteprincipaleetablissement": "NAFRev2",
+        "soussectionunitelegale": "Activit\u00e9s immobili\u00e8res", "numerovoieetablissement":
+        158, "nombreperiodesetablissement": 7, "groupeetablissement": "Location et
+        exploitation de biens immobiliers propres ou lou\u00e9s", "divisionetablissement":
+        "Location et exploitation de biens immobiliers propres ou lou\u00e9s", "activiteprincipaleetablissement":
+        "68.20B", "soussectionetablissement": "Activit\u00e9s immobili\u00e8res",
+        "coderegionetablissement": "84", "departementetablissement": "Allier", "etatadministratifetablissement":
+        "Ferm\u00e9", "sectionetablissement": "Activit\u00e9s immobili\u00e8res",
+        "regionetablissement": "Auvergne-Rh\u00f4ne-Alpes", "datedebutetablissement":
+        "2012-12-29", "epcietablissement": "CA Moulins Communaut\u00e9", "datederniertraitementetablissement":
+        "2024-03-22T15:40:57+00:00", "codeepcietablissement": "200071140", "datederniertraitementunitelegale":
+        "2024-03-22T14:26:06+00:00", "codedepartementetablissement": "03", "datecreationunitelegale":
+        "1981-01-05", "codearrondissementetablissement": "032", "datefermetureetablissement":
+        "2012-12-29", "datedebutunitelegale": "2012-12-29", "datefermetureunitelegale":
+        "2012-12-29", "activiteprincipaleunitelegale": "68.20B", "categoriejuridiqueunitelegale":
+        "5710", "datecreationetablissement": "1994-07-19", "nicsiegeunitelegale":
+        "00021", "nomenclatureactiviteprincipaleunitelegale": "NAFRev2", "denominationunitelegale":
+        "ALIVERT"}, "record_timestamp": "2024-07-03T09:21:00Z"}], "facet_groups":
+        [{"name": "etablissementsiege", "facets": [{"name": "oui", "count": 1, "state":
+        "refined", "path": "oui"}]}]}'
+  recorded_at: Tue, 17 Sep 2024 09:27:11 GMT
+recorded_with: VCR 6.3.1
