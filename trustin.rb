@@ -3,7 +3,7 @@ require "net/http"
 require "logger"
 
 class TrustIn
-  def initialize(evaluations, clients_apis = {siren: SirenApiClient})
+  def initialize(evaluations, clients_apis = {siren: SirenApiClient, vat: VatApiClient})
     @evaluations = evaluations
     @clients_apis = clients_apis
   end
@@ -12,6 +12,7 @@ class TrustIn
     @evaluations.each do |evaluation|
       case evaluation.type
       when "SIREN" then update_siren_evaluation(evaluation)
+      when "VAT" then update_vat_evaluation(evaluation)
       end
     end
   end
@@ -36,6 +37,26 @@ class TrustIn
       # - If the current score is equal or greater than 50, the Siren evaluation's score decreases of 5 points;
       # - If the current score is lower than 50, the Siren evaluation's score decreases of 1 point;
       evaluation.decrease_score(evaluation.score >= 50 ? 5 : 1)
+    end
+  end
+
+  def update_vat_evaluation(evaluation)
+    if evaluation.unfavorable?
+      # When the state is unfavorable, the company evaluation's score does not decrease (a closed company will never open again)
+      return
+    elsif evaluation.score == 0 || evaluation.unconfirmed? && evaluation.ongoing_database_update?
+      # A new evaluation is done when:
+      # - the state is unconfirmed for an ongoing api database update;
+      # - the current score is equal to 0;
+      evaluation.reset(@clients_apis[:vat].call(evaluation.value))
+    elsif evaluation.favorable?
+      # When the state is favorable, the company evaluation's score decreases of 1 point (on the contrary, a company can close so an evaluation should be challenged again after some time)
+      evaluation.decrease_score(1)
+    elsif evaluation.unconfirmed? && evaluation.unable_to_reach_api?
+      # When the state is unconfirmed because the api is unreachable:
+      # - If the current score is equal or greater than 50, the Vat evaluation's score decreases of 1 point;
+      # - If the current score is lower than 50, the Vat evaluation's score decreases of 3 points;
+      evaluation.decrease_score(evaluation.score >= 50 ? 1 : 3)
     end
   end
 end
@@ -145,5 +166,29 @@ class SirenApiClient
 
   def company_state_actif?(payload)
     payload["records"].first["fields"]["etatadministratifetablissement"] == ACTIF_COMPANY_STATE
+  end
+end
+
+class VatApiClient
+  def self.call(vat)
+    new(vat).call
+  end
+
+  def initialize(vat)
+    @vat = vat
+  end
+
+  def call
+    data = [
+      { state: "favorable", reason: "company_opened" },
+      { state: "unfavorable", reason: "company_closed" },
+      { state: "unconfirmed", reason: "unable_to_reach_api" },
+      { state: "unconfirmed", reason: "ongoing_database_update" },
+    ].sample
+    {
+      state: data[:state],
+      reason: data[:reason],
+      score: 100
+    }
   end
 end
